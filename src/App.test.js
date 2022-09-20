@@ -8,6 +8,6 @@ test('renders learn react link', () => {
 });
 
 test('test sum', () => {
-  expect(1 + 2).toBe(4);
+  expect(1 + 2).toBe(3);
 });
 
