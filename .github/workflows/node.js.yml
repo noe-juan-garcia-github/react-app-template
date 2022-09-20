@@ -34,7 +34,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: artifacts
-        path: ./
+        path: build
         
   verify-build:
     runs-on: ubuntu-latest
