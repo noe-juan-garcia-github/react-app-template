@@ -22,7 +22,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: ls .
+    - name: Accessing repository secret
+      run: echo ${{ secrets.MYSECRETNAME }}
     - name: Use Node.js ${{ matrix.node-version }}
+    
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
@@ -30,13 +33,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - name: Lint Code Base
-      uses: github/super-linter@v4
-      env:
-        DISABLE_ERRORS: true
-        VALIDATE_ALL_CODEBASE: false
-        DEFAULT_BRANCH: master
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Upload application artifacts
       uses: actions/upload-artifact@v3
       with:
