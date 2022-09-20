@@ -43,22 +43,28 @@ jobs:
   deploy-to-test:
     runs-on: ubuntu-latest
     needs: build
+    environment: dev
+    concurrency: dev
     steps:
       - name: Download a single artifact        
         uses: actions/download-artifact@v3
         with:
           name: artifacts
       - run: ls .
+      - run: echo ${{ secrets.MYSECRETENVNAME }}
       - run: echo Deploying to TEST environment
       
   deploy-to-prod:
     runs-on: ubuntu-latest
     needs: deploy-to-test
+    environment: prod
+    concurrency: prod
     steps:
       - name: Download a single artifact        
         uses: actions/download-artifact@v3
         with:
           name: artifacts
       - run: ls .
+      - run: echo ${{ secrets.MYSECRETENVNAME }}
       - run: echo Deploying to PROD environment
       
