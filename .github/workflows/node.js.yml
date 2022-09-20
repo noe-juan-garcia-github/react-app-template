@@ -66,5 +66,5 @@ jobs:
           name: artifacts
       - run: ls .
       - run: echo ${{ secrets.MYSECRETENVNAME }}
-      - run: echo Deploying to PROD environment
+      - run: echo Deploying to PROD environment!
       
